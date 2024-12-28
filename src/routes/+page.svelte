@@ -84,7 +84,7 @@
 	}
 </script>
 
-<header class="justify-center flex flex-col items-center text-gray-900 dark:text-gray-200 m-5">
+<header class="h-[70dvh] justify-center flex flex-col items-center text-gray-900 dark:text-gray-200 ">
 	<h1 class="font-bold text-ce text-4xl md:text-5xl lg:text-6xl mb-4 text-center">
 		Generate Lead on upcoming <b class="text-orange-300">project</b>
 	</h1>
@@ -101,7 +101,7 @@
 		onkeypress={(e) => e.key === "Enter" && sendMessage()}
 	/>
     {#if token >0}
-	<button class="btn-primary mb-5" onclick={sendMessage} disabled={$isLoading}>
+	<button class="btn-primary" onclick={sendMessage} disabled={$isLoading}>
         {#if $isLoading}
             <span class="loader"></span> Generating...
         {:else}
@@ -116,15 +116,17 @@
         </button>
     {/if}
 
-	<ul class="todo-list mt-6">
-		{#each $chatHistory as message (message.content)}
-			<li class="todo-item {message.role}">
-				<span class="role">{message.role === "user" ? "You:" : "System:"}</span>
-				{message.content}
-			</li>
-		{/each}
-	</ul>
+	
 </header>
+
+<ul class="todo-list mt-6">
+    {#each $chatHistory as message (message.content)}
+        <li class="todo-item {message.role}">
+            <span class="role">{message.role === "user" ? "You:" : "System:"}</span>
+            {message.content}
+        </li>
+    {/each}
+</ul>
 
 <style>
 	.todo-list {
